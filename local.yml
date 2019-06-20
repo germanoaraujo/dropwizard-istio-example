@@ -1,0 +1,3 @@
+template: Hello, %s!!!!!!
+defaultName: Stranger
+version: v3.0

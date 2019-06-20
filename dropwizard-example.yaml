@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dropwizard-example
+  labels:
+    app: dropwizard-example
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    name: http
+  selector:
+    app: dropwizard-example
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: dropwizard-example-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dropwizard-example
+        version: v1
+    spec:
+      containers:
+      - name: dropwizard-example
+        image: gcr.io/quick-start-server-dev/dropwizard-example:v1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: dropwizard-example-v2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dropwizard-example
+        version: v2
+    spec:
+      containers:
+      - name: dropwizard-example
+        image: gcr.io/quick-start-server-dev/dropwizard-example:v2.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
