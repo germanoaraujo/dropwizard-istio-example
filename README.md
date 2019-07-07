@@ -12,3 +12,7 @@ java -jar target/dropwizard-sandbox-*.jar server local.yml
 ``` 
 
 The application will run on http://localhost:8080, and an admin page can be found on  http://localhost:8081
+
+### Slides
+[slides.pdf](https://github.com/jofen-misc/dropwizard-istio-example/blob/master/k8s-demo.pdf)
+
